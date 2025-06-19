@@ -1,0 +1,28 @@
+# Ignore Composer dependencies
+/vendor/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+logs/
+
+# Ignore environment files with sensitive data
+.env
+.env.local
+.env.*.local
+
+# Ignore IDE/Editor specific files
+.idea/
+.vscode/
+*.swp
+*~
+
+# Ignore user-uploaded files (ถ้ามี)
+/uploads/
+/public/uploads/
+
+# Ignore XAMPP specific files (เผื่อไว้)
+*.stackdump
