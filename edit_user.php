@@ -3,7 +3,7 @@
 $page_title = "แก้ไขข้อมูลผู้ใช้";
 include 'templates/sidebar_header.php';
 
-// --- 1. ตรวจสอบสิทธิ์และ ID ที่ส่งมา ---
+// --- 1. ตรวจสอบสิทธิ์และ ID ที่ส่งมา --
 if ($userRole !== 'admin') {
     $_SESSION['flash_message'] = ['type' => 'danger', 'text' => 'คุณไม่มีสิทธิ์เข้าถึงหน้านี้'];
     header("Location: index.php");
