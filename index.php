@@ -8,7 +8,7 @@ date_default_timezone_set('Asia/Bangkok');
 $thai_date = "วันนี้วัน " . date('l ที่ j F Y');
 
 // 2. โค้ด PHP Logic ทั้งหมดสำหรับดึงข้อมูล
-// ==========================================
+// ===========================================
 
 // 2.1. กำหนดบ่อที่เลือก (จาก URL) และบ่อที่ user มีสิทธิ์ดู
 $selected_pond_id = isset($_GET['pond_id']) && is_numeric($_GET['pond_id']) ? (int)$_GET['pond_id'] : 'all';
