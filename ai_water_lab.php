@@ -48,9 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<h1><i class="bi bi-robot"></i> ห้องปฏิบัติการคุณภาพน้ำ (AI)</h1>
+<h1 class="gradient-text fw-bolder"><i class="bi bi-robot"></i> ห้องปฏิบัติการคุณภาพน้ำ (AI)</h1>
 <p class="lead">โหลดข้อมูลจริงจากบ่อ หรือทดลองจำลองสถานการณ์ต่างๆ เพื่อรับคำแนะนำจาก AI</p>
-<hr>
+<hr class="mb-4">
 
 <div class="row">
     <div class="col-lg-5 mb-4">
