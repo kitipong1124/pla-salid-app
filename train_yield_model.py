@@ -19,7 +19,7 @@ features = [
     'pond_size_rai', 'cycle_duration_days', 'initial_fish_amount', 
     'initial_fish_cost', 'total_food_sacks_811', 'total_food_sacks_812',
     'total_food_cost', 'other_expenses', 'prorated_rent_cost', 
-    'avg_ph', 'avg_ammonium', 'avg_nitrite', 'water_problem_incidents'
+    'avg_ph', 'avg_ammonium', 'avg_nitrite', 'water_problem_incidents','price_selling/Kg'
 ]
 
 # Labels คือ "คำตอบ" ที่เราต้องการให้ AI เรียนรู้ที่จะทำนาย
