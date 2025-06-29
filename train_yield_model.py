@@ -4,27 +4,43 @@ import joblib
 
 print("เริ่มต้นกระบวนการเทรนโมเดลทำนายผลผลิตและกำไร...")
 
-# 1. อ่านข้อมูลจาก CSV ที่เราเตรียมไว้
+# 1. อ่านข้อมูลจาก CSV
 try:
-    # ระบุ encoding เป็น 'utf-8' เพื่อรองรับภาษาไทยในชื่อบ่อ
-    data = pd.read_csv('datatest.csv', encoding='utf-8')
-    print(f"อ่านไฟล์ datatest.csv สำเร็จ! พบข้อมูลทั้งหมด {len(data)} กรณีศึกษา")
+    data = pd.read_csv('dataset_yield.csv', encoding='utf-8', thousands=',')
+    print(f"อ่านไฟล์ dataset_yield.csv สำเร็จ! พบข้อมูลทั้งหมด {len(data)} กรณีศึกษา")
 except FileNotFoundError:
-    print("Error: ไม่พบไฟล์ datatest.csv กรุณาตรวจสอบว่าไฟล์อยู่ในตำแหน่งที่ถูกต้อง")
+    print("Error: ไม่พบไฟล์ dataset_yield.csv")
+    exit()
+
+# *** จุดที่แก้ไข: เพิ่มขั้นตอนการจัดการข้อมูลที่หายไป (NaN) ***
+print("ตรวจสอบและจัดการข้อมูลที่หายไป (NaN)...")
+# เราจะลบแถวใดๆ ก็ตามที่มีค่าว่างในคอลัมน์ที่เราจะใช้ทำนาย
+original_rows = len(data)
+data.dropna(subset=['final_harvest_weight_kg', 'final_profit'], inplace=True)
+cleaned_rows = len(data)
+
+if cleaned_rows < original_rows:
+    print(f"คำเตือน: ได้ลบข้อมูลจำนวน {original_rows - cleaned_rows} แถว เนื่องจากมีค่าว่างในคอลัมน์ผลลัพธ์")
+
+if data.empty:
+    print("Error: ไม่มีข้อมูลเหลือให้เทรนหลังจากลบแถวที่มีค่าว่างทิ้งไปแล้ว")
     exit()
 
 # 2. เตรียมข้อมูล (Features และ Labels)
-# Features คือ "ปัจจัย" ที่เราจะใช้ในการทำนาย (ตัดคอลัมน์ที่ไม่ใช่ตัวเลขและผลลัพธ์ออก)
 features = [
     'pond_size_rai', 'cycle_duration_days', 'initial_fish_amount', 
     'initial_fish_cost', 'total_food_sacks_811', 'total_food_sacks_812',
     'total_food_cost', 'other_expenses', 'prorated_rent_cost', 
-    'avg_ph', 'avg_ammonium', 'avg_nitrite', 'water_problem_incidents','price_selling/Kg'
+    'avg_ph', 'avg_ammonium', 'avg_nitrite', 'water_problem_incidents', 'price_selling/Kg'
 ]
-
-# Labels คือ "คำตอบ" ที่เราต้องการให้ AI เรียนรู้ที่จะทำนาย
 label_weight = 'final_harvest_weight_kg'
 label_profit = 'final_profit'
+
+# ตรวจสอบว่ามีคอลัมน์ครบหรือไม่
+missing_cols = [col for col in features + [label_weight, label_profit] if col not in data.columns]
+if missing_cols:
+    print(f"Error: ไม่พบคอลัมน์ต่อไปนี้ในไฟล์ CSV: {', '.join(missing_cols)}")
+    exit()
 
 X = data[features]
 y_weight = data[label_weight]
