@@ -1,6 +1,0 @@
-﻿pond_id,pond_name,pond_size_rai,cycle_duration_days,initial_fish_amount,initial_fish_cost,total_food_sacks_811,total_food_sacks_812,total_food_cost,other_expenses,prorated_rent_cost,avg_ph,avg_ammonium,avg_nitrite,water_problem_incidents,final_harvest_weight_kg,final_fish_size,survival_rate_percent,final_profit
-4,บ่อกิติ (เคสจริง),8,298,190000,19000,1565,145,998750,25000,6531.51,8.3,0.38,0.14,2,8800,21.5,99.21,120281.51
-5,บ่อ sanook (เคสจริง),7,323,150000,16500,1655,0,1034375,18000,7079.45,7.9,0.18,0.08,1,9200,16.5,101.4,144045.55
-6,บ่อ A1 (บ่อประหยัด),5,300,120000,15000,800,50,532250,12000,6575.34,7.8,0.2,0.1,0,5500,22,100.83,132174.66
-7,บ่อ B2 (บ่อเร่งโต),5,270,120000,18000,1000,500,948750,22000,5917.81,8.5,0.55,0.22,4,7000,18,105,-154667.81
-8,บ่อ C3 (บ่อน้ำนิ่ง),6,310,140000,17000,1200,200,879000,15000,6794.52,8.6,0.4,0.15,8,4500,32,102.86,-307794.52
