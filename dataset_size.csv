@@ -1,4 +1,4 @@
-rearing_day,pond,size,pond_size_rai,fish_amount
+rearing_day,pond_name,fish_size,pond_size_rai,fish_amount
 1,a,1000,18,330000
 59,a,41,18,330000
 88,a,26.4,18,330000

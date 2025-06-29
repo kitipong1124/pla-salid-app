@@ -48,6 +48,7 @@ $userRole = $_SESSION['role'] ?? 'user';
         <li class="nav-item"><a class="nav-link" href="profit_loss_report.php"><i class="bi bi-cash-coin"></i> สรุปผลกำไร/ขาดทุน</a></li>
         <li class="nav-item mt-3"><small class="text-white-50 ps-3">เครื่องมือ AI</small></li>
         <li class="nav-item"><a class="nav-link" href="ai_water_lab.php"><i class="bi bi-robot"></i> วิเคราะห์คุณภาพน้ำ</a></li>
+        <li class="nav-item"><a class="nav-link" href="ai_growth_advisor.php"><i class="bi bi-graph-up"></i> ที่ปรึกษาการเติบโต</a></li>
         <li class="nav-item"><a class="nav-link" href="ai_yield_predictor.php"><i class="bi bi-graph-up-arrow"></i> ทำนายผลผลิต</a></li>
         <li class="nav-item mt-3"><small class="text-white-50 ps-3">การจัดการข้อมูล</small></li>
         <li class="nav-item mt"><a class="nav-link" href="add_feeding.php"><i class="bi bi-plus-circle-fill"></i> บันทึกการให้อาหาร</a></li>
