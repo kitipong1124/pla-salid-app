@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<h1 class="gradient-text fw-bolder"><i class="bi bi-robot"></i> AI ทำนายผลผลิตและกำไร</h1>
+<h1 class="gradient-text fw-bolder"><i class="bi bi-graph-up-arrow"></i> AI ทำนายผลผลิตและกำไร</h1>
 <p class="lead">กรอกแผนการเลี้ยงของคุณ เพื่อให้ AI ช่วยคาดการณ์ผลลัพธ์สุดท้าย</p>
 <hr>
 

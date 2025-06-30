@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<h1 class="gradient-text fw-bolder"><i class="bi bi-graph-up-arrow"></i> AI ที่ปรึกษาการเจริญเติบโต</h1>
+<h1 class="gradient-text fw-bolder"><i class="bi bi-graph-up"></i> AI ที่ปรึกษาการเจริญเติบโต</h1>
 <p class="lead">เลือกบ่อเพื่อดูสถานะปัจจุบัน และทำนายขนาดปลาในอนาคต</p>
 <hr>
 
