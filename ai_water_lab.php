@@ -109,7 +109,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php if ($error_message): ?>
                     <div class="alert alert-danger"><h4 class="alert-heading"><i class="bi bi-x-octagon-fill"></i> เกิดข้อผิดพลาด</h4><p><?= htmlspecialchars($error_message) ?></p></div>
                 <?php elseif ($prediction_result): ?>
-                    <div class="alert alert-info"><h4 class="alert-heading">ผลการทำนาย:</h4><p class="fs-5 fw-bold"><?= htmlspecialchars(trim($prediction_result)) ?></p><hr><p class="mb-0 small">นี่เป็นเพียงคำแนะนำเบื้องต้นจาก AI ควรพิจารณาร่วมกับปัจจัยอื่นๆ ในการเลี้ยงจริง</p></div>
+                    <?php
+                    // --- ส่วนที่เพิ่มเข้ามา ---
+                    // 1. ตั้งค่าคลาสเริ่มต้นเป็นสีฟ้า (เผื่อกรณีไม่ตรงกับเงื่อนไขใดๆ)
+                    $alert_class = 'alert-info';
+                    $result_text = trim($prediction_result); // นำผลลัพธ์มาตัดช่องว่างก่อน
+
+                    // 2. ตรวจสอบข้อความเพื่อเปลี่ยนสี
+                    if (str_contains($result_text, 'อันตราย')) {
+                        $alert_class = 'alert-danger'; // ถ้าเจอคำว่า "อันตราย" ให้ใช้คลาสสีแดง
+                    } elseif (str_contains($result_text, 'เสี่ยง')) {
+                        $alert_class = 'alert-warning'; // ถ้าเจอคำว่า "เสี่ยง" ให้ใช้คลาสสีเหลือง
+                    } elseif (str_contains($result_text, 'ปกติ')) {
+                        $alert_class = 'alert-success'; // ถ้าเจอคำว่า "ปกติ" ให้ใช้คลาสสีเขียว
+                    }
+                    ?>
+                    <div class="alert <?= $alert_class ?>">
+                        <h4 class="alert-heading">ผลการทำนาย:</h4>
+                        <p class="fs-5 fw-bold"><?= htmlspecialchars($result_text) ?></p>
+                        <hr>
+                        <p class="mb-0 small">นี่เป็นเพียงคำแนะนำเบื้องต้นจาก AI ควรพิจารณาร่วมกับปัจจัยอื่นๆ ในการเลี้ยงจริง</p>
+                    </div>
                 <?php else: ?>
                     <div class="text-center text-muted p-5"><i class="bi bi-cpu-fill" style="font-size: 3rem;"></i><p class="mt-2">รอรับข้อมูลเพื่อทำการวิเคราะห์...</p></div>
                 <?php endif; ?>

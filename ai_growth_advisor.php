@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('latestSize').textContent = '...';
         document.getElementById('currentDays').textContent = '...';
 
-        fetch(`api/get_latest_growth_data.php?pond_id=${selectedPondId}`)
+        fetch(`<?= BASE_URL ?>api/get_latest_growth_data.php?pond_id=${selectedPondId}`)
             .then(response => response.json())
             .then(result => {
                 if (result.success && result.data) {

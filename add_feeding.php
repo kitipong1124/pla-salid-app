@@ -1,10 +1,8 @@
 <?php
-// 1. ตั้งชื่อ Title ของหน้า
-$page_title = "บันทึกการให้อาหาร";
-
 // 2. เรียกใช้ Header ตัวใหม่ที่มี Sidebar
 // ไฟล์นี้จะจัดการ session, config, และแสดงผล sidebar ให้เราอัตโนมัติ
-include 'templates/sidebar_header.php';
+session_start();
+include_once __DIR__ . '/config.php';
 
 // 3. โค้ด PHP เฉพาะของหน้านี้ (ส่วน Logic) - เหมือนเดิมทุกประการ
 // --- การประมวลผลฟอร์มเมื่อมีการส่งข้อมูล (POST) ---
@@ -32,7 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 }
-
+$page_title = "บันทึกการให้อาหาร";
+include 'templates/sidebar_header.php';
 // --- ดึงข้อมูลสำหรับใช้ในฟอร์ม (Dropdown) ---
 $ponds_for_form = [];
 if ($userRole === 'admin') {

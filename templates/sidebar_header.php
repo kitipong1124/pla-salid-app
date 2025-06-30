@@ -1,6 +1,9 @@
 <?php
 // templates/sidebar_header.php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 include_once __DIR__ . '/../config.php';
 
 if (!isset($_SESSION['user_id'])) {
