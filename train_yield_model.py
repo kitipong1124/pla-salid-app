@@ -14,7 +14,6 @@ except FileNotFoundError:
 
 # *** จุดที่แก้ไข: เพิ่มขั้นตอนการจัดการข้อมูลที่หายไป (NaN) ***
 print("ตรวจสอบและจัดการข้อมูลที่หายไป (NaN)...")
-# เราจะลบแถวใดๆ ก็ตามที่มีค่าว่างในคอลัมน์ที่เราจะใช้ทำนาย
 original_rows = len(data)
 data.dropna(subset=['final_harvest_weight_kg', 'final_profit'], inplace=True)
 cleaned_rows = len(data)
@@ -36,7 +35,6 @@ features = [
 label_weight = 'final_harvest_weight_kg'
 label_profit = 'final_profit'
 
-# ตรวจสอบว่ามีคอลัมน์ครบหรือไม่
 missing_cols = [col for col in features + [label_weight, label_profit] if col not in data.columns]
 if missing_cols:
     print(f"Error: ไม่พบคอลัมน์ต่อไปนี้ในไฟล์ CSV: {', '.join(missing_cols)}")
@@ -52,11 +50,19 @@ model_weight = RandomForestRegressor(n_estimators=100, random_state=42)
 model_weight.fit(X, y_weight)
 print("เทรนโมเดล 'น้ำหนักผลผลิต' สำเร็จ!")
 
+# *** เพิ่มวัดความแม่นยำ ***
+weight_score = model_weight.score(X, y_weight)
+print(f"ความแม่นยำของโมเดล 'น้ำหนักผลผลิต' (R²): {weight_score:.4f}")
+
 # 4. สร้างและสอนโมเดลสำหรับ "ทำนายกำไร"
 print("กำลังเทรนโมเดลทำนาย 'กำไร/ขาดทุน'...")
 model_profit = RandomForestRegressor(n_estimators=100, random_state=42)
 model_profit.fit(X, y_profit)
 print("เทรนโมเดล 'กำไร/ขาดทุน' สำเร็จ!")
+
+# *** เพิ่มวัดความแม่นยำ ***
+profit_score = model_profit.score(X, y_profit)
+print(f"ความแม่นยำของโมเดล 'กำไร/ขาดทุน' (R²): {profit_score:.4f}")
 
 # 5. บันทึกโมเดลทั้งสองเก็บไว้เป็นไฟล์
 joblib.dump(model_weight, 'yield_weight_model.pkl')

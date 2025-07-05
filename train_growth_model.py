@@ -13,7 +13,7 @@ except Exception as e:
     print(f"Error: เกิดข้อผิดพลาดในการอ่านหรือเตรียมไฟล์ CSV: {e}")
     exit()
 
-# 2. เตรียมข้อมูล (ใช้ 3 Features ตามแผนล่าสุด)
+# 2. เตรียมข้อมูล
 features = ['rearing_day', 'pond_size_rai', 'fish_amount']
 target_label = 'fish_size'
 
@@ -28,7 +28,11 @@ model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X, y)
 print("สอน AI สำเร็จ!")
 
-# 4. บันทึกโมเดลและรายชื่อ Features ที่ใช้
+# 4. แสดงความแม่นยำ (Accuracy / R²)
+accuracy = model.score(X, y)
+print(f"ความแม่นยำของโมเดล (R² score): {accuracy:.4f}")
+
+# 5. บันทึกโมเดลและรายชื่อ Features ที่ใช้
 joblib.dump(model, 'growth_model_v2.pkl')
 print("บันทึกโมเดลสำเร็จ! ไฟล์ 'growth_model_v2.pkl' ถูกสร้างขึ้นแล้ว")
 
